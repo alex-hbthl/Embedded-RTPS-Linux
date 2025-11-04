@@ -9,11 +9,12 @@ The content and structure of this repository is work in progress.
 
 All dependencies are integrated as submodules to this repository. Make sure to use git clone --recursive when cloning.
 
-## Compile
+## Recompile
 
 Run the following commands to compile the contents of this repository.  
 
 ```bash
+rm -r build 
 git submodule update --init --recursive 
 mkdir build
 cd build
