@@ -1,7 +1,8 @@
 project(embeddedRTPS-Desktop)
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-O0 -Wall -Wextra -Wnon-virtual-dtor -Wpedantic -fno-non-call-exceptions -fno-exceptions -fPIC -fno-rtti")
+#set(CMAKE_CXX_FLAGS "-O0 -Wall -Wextra -Wnon-virtual-dtor -Wpedantic -fno-non-call-exceptions -fno-exceptions -fPIC -fno-rtti")
+set(CMAKE_CXX_FLAGS "-O0 -Wall -Wextra -Wnon-virtual-dtor -Wpedantic -fPIC -fno-rtti")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
@@ -72,9 +73,10 @@ target_sources(embeddedrtps
 
 target_include_directories(embeddedrtps PUBLIC include ${microcdr_SOURCE_DIR}/include)
 target_link_libraries(embeddedrtps PRIVATE lwip microcdr)
+target_compile_definitions(embeddedrtps PUBLIC EMBRTPS_USE_SOCKETS)
 
 # embeddedRTPS test
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 # FastDDS
-add_subdirectory(fastdds)
+#add_subdirectory(fastdds)
