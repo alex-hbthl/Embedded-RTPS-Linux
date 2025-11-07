@@ -76,7 +76,7 @@ target_link_libraries(embeddedrtps PRIVATE lwip microcdr)
 target_compile_definitions(embeddedrtps PUBLIC EMBRTPS_USE_SOCKETS)
 
 # embeddedRTPS test
-#add_subdirectory(tests)
+add_subdirectory(tests)
 
 # FastDDS
-#add_subdirectory(fastdds)
+add_subdirectory(fastdds)

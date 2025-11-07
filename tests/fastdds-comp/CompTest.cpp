@@ -11,6 +11,7 @@
 
 #include "rtps/rtps.h"
 #include "rtps/entities/Domain.h"
+#include "rtps/config_desktop.h"
 #include "Sender.h"
 #include "Receiver.h"
 
