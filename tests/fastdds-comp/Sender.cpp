@@ -17,7 +17,8 @@
 #include <numeric>
 #include <cmath>
 #include <algorithm>
-
+#include <thread>
+#include <chrono>
 
 using rtps::tests::Sender;
 
@@ -27,7 +28,7 @@ Sender::Sender(uint32_t numSamples)
 }
 
 void Sender::prepareRTPS(){
-    
+
     auto part = m_domain.createParticipant();
     if(part == nullptr){
        std::cout << "Failed to create participant\n";
@@ -45,7 +46,7 @@ void Sender::prepareRTPS(){
 
 void Sender::run() {
     std::cout << "Waiting 15 sec for startup...." << '\n';
-    sys_msleep(5000); // Wait for initialization
+    std::this_thread::sleep_for(std::chrono::milliseconds(5000)); // Wait for initialization
     std::cout << "Go!" << '\n';
 
     printf("Sending HelloWorldPackets: \n", m_numSamples);
@@ -54,7 +55,7 @@ void Sender::run() {
         runWithIndex(m_index);
         printf("Hello WorldPacket sent: Index %d \n", m_index);
         m_index++;
-        sys_msleep(100);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 }
 
